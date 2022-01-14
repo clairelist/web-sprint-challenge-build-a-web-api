@@ -4,7 +4,8 @@
 const express = require('express');
 
  const {
-    validateActionId
+    validateActionId,
+    validateAction,
 } = require('./actions-middlware'); //MIDDLEWARE IS MISSPELLED ON THE FILE ITSELF FFS
 
 const Actions = require('./actions-model');
@@ -24,5 +25,13 @@ router.get('/', (req, res) => { //get all, return an array !
   router.get('/:id', validateActionId,(req,res)=>{ //get by ID; will require middleware !
       res.json(req.action);
   });
+
+router.post('/',validateAction,(req,res,next)=>{
+    Actions.insert(req.action)
+       .then((req) => {
+        res.json(req.action);
+       })
+       .catch(next)
+});
 
   module.exports = router;
