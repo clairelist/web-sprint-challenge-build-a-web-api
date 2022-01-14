@@ -2,16 +2,14 @@
 
 //DATA sectionr
 const express = require('express');
-
  const {
     validateActionId,
     validateAction,
-} = require('./actions-middlware'); //MIDDLEWARE IS MISSPELLED ON THE FILE ITSELF FFS
-
+} = require('./actions-middlware'); //MIDDLEWARE IS MISSPELLED HAHAHA
 const Actions = require('./actions-model');
-
 const router = express.Router();
 
+//LOGIC sectionr
 router.get('/', (req, res) => { //get all, return an array ! 
     Actions.get(req.params.id)
     .then(actions=>{
