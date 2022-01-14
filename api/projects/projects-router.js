@@ -3,7 +3,9 @@
 //DATA SECTIONR
 
 const express = require('express');
-// const {} = require('./projects-middleware');
+const {
+    validateProjectId,
+} = require('./projects-middleware');
 const Projects = require('./projects-model'); 
 const router = express.Router();
 
@@ -18,5 +20,11 @@ router.get('/', (req, res) => { //get all, return an array !
         res.status(404).json(err);
     })
   });
+
+  //GET BY ID x , POST, PUT, DELETE, GET ACTIONS ON PROJECT
+
+  router.get('/:id',validateProjectId,(req,res)=>{ //GET by id
+    res.json(req.project); 
+  })
 
   module.exports = router;

@@ -20,7 +20,7 @@ router.get('/', (req, res) => { //get all, return an array !
     })
   });
 
-  router.get('/:id', validateActionId,(req,res)=>{ //get by ID; will require middleware !
+  router.get('/:id', validateActionId,(req,res)=>{ //get by ID
       res.json(req.action);
   });
 
