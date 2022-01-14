@@ -5,6 +5,7 @@
 const express = require('express');
 const {
     validateProjectId,
+    validateProject,
 } = require('./projects-middleware');
 const Projects = require('./projects-model'); 
 const router = express.Router();
@@ -25,6 +26,14 @@ router.get('/', (req, res) => { //get all, return an array !
 
   router.get('/:id',validateProjectId,(req,res)=>{ //GET by id
     res.json(req.project); 
-  })
+  });
+
+  router.post('/',validateProject,(req,res,next)=>{ //POST an action
+    Projects.insert(req.body)
+       .then((project) => {
+        res.json(project);
+       })
+       .catch(next)
+});
 
   module.exports = router;
