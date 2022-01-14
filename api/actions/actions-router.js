@@ -26,10 +26,10 @@ router.get('/', (req, res) => { //get all, return an array !
       res.json(req.action);
   });
 
-router.post('/',validateAction,(req,res,next)=>{
-    Actions.insert(req.action)
-       .then((req) => {
-        res.json(req.action);
+router.post('/',validateAction,(req,res,next)=>{ //not sure why post isn't working here...
+    Actions.insert(req.body)
+       .then((action) => {
+        res.json(action);
        })
        .catch(next)
 });

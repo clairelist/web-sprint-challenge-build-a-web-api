@@ -16,11 +16,12 @@ async function validateActionId(req, res, next) { //asyncronous bc we are callin
   }
 
   function validateAction(req, res, next) {
-    const {description,notes,completed} = req.body;
-    if (!description || !notes || !completed) {
+    if (!req.body.description) {
         res.status(400).json({message: 'missing required fields field'}); //RES NOT REQUEST !
+    } else if (!req.body.notes){
+      res.status(400).json({message: 'missing required fields field'}); //let's make it VERY EXPLICIT
     } else {
-      next();
+        next();
     }
   }
 
