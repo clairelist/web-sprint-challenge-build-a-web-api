@@ -26,12 +26,22 @@ router.get('/', (req, res) => { //get all, return an array !
       res.json(req.action);
   });
 
-router.post('/',validateAction,(req,res,next)=>{ //not sure why post isn't working here...
+router.post('/',validateAction,(req,res,next)=>{ //POST an action
     Actions.insert(req.body)
        .then((action) => {
         res.json(action);
        })
        .catch(next)
 });
+
+router.put('/:id', validateAction, validateActionId, (req, res, next) => { //UPDATE an existing action
+    Actions.update(req.params.id, req.body)
+      .then(action => {
+        res.status(200).json(action);
+      })
+      .catch(error => {
+        next(error)
+      });
+  });
 
   module.exports = router;
