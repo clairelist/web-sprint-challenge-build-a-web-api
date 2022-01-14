@@ -37,7 +37,7 @@ A _"resetdb"_ script exists that allows you to reset the database to its origina
 
 #### Environment Variables
 
-- [ ] Bring the port number from the `process.env` variable, falling back to `9000` if `process.env.PORT` is undefined **!!!**
+- [X] Bring the port number from the `process.env` variable, falling back to `9000` if `process.env.PORT` is undefined **!!!**
 
 #### Endpoints
 
@@ -147,7 +147,16 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
-1. Understand and explain the use of Middleware.
-1. The basic principles of the REST architectural style.
-1. Understand and explain the use of Express Routers.
-1. Describe tooling used to manually test the correctness of an API.
+  Node.js allows us to use javascript in a way it was never intended to be used -- writing code meant to live on a server. Express is a light framework for node that gives us abstracted wrappers so we don't have to write our more code by hand.
+
+2. Understand and explain the use of Middleware.
+  Middleware is basically logic that exists to keep code from repeating itself; it helps developers to write cleaner, more efficient code.
+
+3. The basic principles of the REST architectural style.
+  A "RESTful" API is one that has easily-understood methods of hitting the endpoints.
+
+4. Understand and explain the use of Express Routers.
+  Routers in Express let the developer shorten endpoint URLs so that they can have more efficient code.
+
+5. Describe tooling used to manually test the correctness of an API.
+  Setting up certain requests beforehand so that a developer can fire off http requests and visually looking at the responses, ie through Postman, or a cli tool like HTTPie. 
